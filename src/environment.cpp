@@ -48,6 +48,7 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     // TODO:: Create lidar sensor 
 
     // TODO:: Create point processor
+    // Manjeet will do it later
   
 }
 
