@@ -26,11 +26,13 @@ $> mkdir build && cd build
 $> cmake ..
 $> make
 $> ./environment
-```
+
 Arun:- The project can be viewed in Xming when using WSL Ubuntu. The following commands will help to install Xming and run the graphics.
-# sudo apt-get install x11-apps
-# export DISPLAY=:0
-# xeyes 
+$> sudo apt-get install x11-apps
+$> export DISPLAY=:0
+$> xeyes 
+```
+
 For more information visit: https://virtualizationreview.com/articles/2018/01/30/hands-on-with-wsl-graphical-apps.aspx
 ### Windows 
 
