@@ -64,7 +64,6 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr &viewer)
         std::cout << "cluster size ";
         pointProcessor.numPoints(cluster);
         renderPointCloud(viewer, cluster, "obstCloud" + std::to_string(clusterId), colors[clusterId]);
-
         // Step 3. Find bounding boxes for the clusters
         Box box = pointProcessor.BoundingBox(cluster);
         renderBox(viewer, box, clusterId);
@@ -103,6 +102,17 @@ void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr &vi
         viewer->addCoordinateSystem(1.0);
 }
 
+void cityBlock(pcl::visualization::PCLVisualizer::Ptr &viewer)
+{
+    // ----------------------------------------------------
+    // -----Open 3D viewer and display City Block     -----
+    // ----------------------------------------------------
+
+    ProcessPointClouds<pcl::PointXYZI> *pointProcessorI = new ProcessPointClouds<pcl::PointXYZI>();
+    pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessorI->loadPcd("../src/sensors/data/pcd/data_1/0000000000.pcd");
+    renderPointCloud(viewer, inputCloud, "inputCloud");
+}
+
 int main(int argc, char **argv)
 {
     std::cout << "starting enviroment" << std::endl;
@@ -110,7 +120,8 @@ int main(int argc, char **argv)
     pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
     CameraAngle setAngle = XY;
     initCamera(setAngle, viewer);
-    simpleHighway(viewer);
+    cityBlock(viewer);
+    //simpleHighway(viewer);
 
     while (!viewer->wasStopped())
     {
